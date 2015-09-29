@@ -3,6 +3,7 @@ import ConfigParser
 from ConfigParser import NoSectionError, NoOptionError
 import sys
 import json
+import yaml
 
 class Config(object):
     """
@@ -21,7 +22,7 @@ class Config(object):
             self.__password = config_parser.get(section, "password")
             self.__snapshot_description = config_parser.get(section, "snapshot_description")
             self.__cluster_name = config_parser.get(section, "cluster_name")
-            self.__export_domain = config_parser.get(section, "export_domain")
+            self.__export_domain = yaml.load(config_parser.get(section, "export_domain"))
             self.__timeout = config_parser.getint(section, "timeout")
             self.__backup_keep_count = config_parser.getint(section, "backup_keep_count")
             self.__dry_run = config_parser.getboolean(section, "dry_run")
