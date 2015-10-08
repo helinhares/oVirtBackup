@@ -27,6 +27,7 @@ class Config(object):
             self.__backup_keep_count = config_parser.getint(section, "backup_keep_count")
             self.__dry_run = config_parser.getboolean(section, "dry_run")
             self.__debug = debug
+            self.__export_volume_rotate = config_parser.get(section, "export_volume_rotate")
         except NoSectionError as e:
             print str(e)
             sys.exit(1)
@@ -83,3 +84,7 @@ class Config(object):
 
     def get_debug(self):
         return self.__debug
+    
+    def get_export_volume_rotate(self):
+        return self.__export_volume_rotate
+
